@@ -7,16 +7,16 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Bullet_man.h"
 #include "Components/BoxComponent.h"
-#include "PRO_IT_IS.generated.h"
+#include "Character_Movement.generated.h"
 
 UCLASS()
-class PEN_API APRO_IT_IS : public ACharacter
+class PEN_API ACharacter_Movement : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	APRO_IT_IS();
+	ACharacter_Movement();
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,37 +31,39 @@ public:
 
 
 public:
-	//The Muzzle of the gun
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-		class USceneComponent* muz;
-
+	
+	//The gun
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
 		class USkeletalMeshComponent* shit;
 
 	//The Camera
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
 		class UCameraComponent* cam;
-
-
+	
+	//The SpringArmComponent which allows for additional functions
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		class USpringArmComponent* lol;
+		class USpringArmComponent* arm;
 
-
+	//The hands of the player
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
-		class USkeletalMeshComponent* sesh;
+		class USkeletalMeshComponent* hands;
 
+	//From where the bullet is suppposed to go.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		class USceneComponent* pen;
-
+		class USceneComponent* Bullet_go;
+	
+	//Playing the sound
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		class USoundBase* hell;
+		class USoundBase* Sound_Play;
 
-
+	//The bullet class 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Projectile)
-		TSubclassOf<ABullet_man> bullf;
-
+		TSubclassOf<ABullet_man> bullet_class_mesh;
+	
+	
+	//To take damage
 	UPROPERTY(EditAnywhere , BlueprintReadWrite)
-		class UBoxComponent* liz;
+		class UBoxComponent* Collsion_component;
 
 
 	UFUNCTION()
@@ -69,8 +71,9 @@ public:
 
 
 
-	void lpp();
-
+	void tpp();
+	
+	//The Movement functions
 	void Forward_Back(float value);
 
 	void Left_Right(float value);
@@ -83,26 +86,14 @@ public:
 
 	void fire();
 
-	//When Object hit.
-	FHitResult lens;
-
-	//IDK
-	FCollisionQueryParams ken;
-
-	//The start for LineTrace
+	//The start for Bullet
 	FVector start;
 
-	//The end for LineTrace
+	//The Rotation
 	FRotator axis_of_the_worlds;
 
 	FActorSpawnParameters spawn;
-
-	void sops();
 	
 	UPROPERTY(EditAnywhere , BlueprintReadOnly)
 		float health = 100.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		float health_for_gui = health / 100.0f;
-
 };
