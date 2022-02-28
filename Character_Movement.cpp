@@ -27,7 +27,9 @@ ACharacter_Movement::ACharacter_Movement()
 
 	//The first paramater is the fat and the second one is the height
 	GetCapsuleComponent()->SetCapsuleSize(100, 150);
-
+	
+	//Set all the components location in blueprint class which inherits from it, instead of code that makes it easier.
+	
 	arm = CreateDefaultSubobject<USpringArmComponent>(TEXT("arm"));
 	arm->SetupAttachment(GetCapsuleComponent());
 	arm->TargetArmLength = 0;
@@ -52,6 +54,7 @@ ACharacter_Movement::ACharacter_Movement()
 	hands = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("hands"));
 	hands->SetupAttachment(GetCapsuleComponent());
 
+	//From where the bullet will launch
 	Bullet_go = CreateDefaultSubobject<USceneComponent>(TEXT("Bullet_go"));
 	Bullet_go->SetupAttachment(shit);
 
