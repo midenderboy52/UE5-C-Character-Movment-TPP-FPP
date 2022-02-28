@@ -3,7 +3,7 @@
 #include "Bullet_man.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
-#include "PRO_Enemy.h"
+#include "Character_Movement.h"
 
 // Sets default values
 ABullet_man::ABullet_man()
