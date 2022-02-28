@@ -34,7 +34,7 @@ public:
 	
 	//The gun
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
-		class USkeletalMeshComponent* shit;
+		class USkeletalMeshComponent* gun;
 
 	//The Camera
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
