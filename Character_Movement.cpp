@@ -42,7 +42,7 @@ ACharacter_Movement::ACharacter_Movement()
 	arm->CameraLagMaxTimeStep = 1;
 
 	cam = CreateDefaultSubobject<UCameraComponent>(TEXT("cam"));
-	cam->SetupAttachment(lol, USpringArmComponent::SocketName);
+	cam->SetupAttachment(arm, USpringArmComponent::SocketName);
 
 	//gun
 	gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("gun"));
@@ -56,7 +56,7 @@ ACharacter_Movement::ACharacter_Movement()
 
 	//From where the bullet will launch
 	Bullet_go = CreateDefaultSubobject<USceneComponent>(TEXT("Bullet_go"));
-	Bullet_go->SetupAttachment(shit);
+	Bullet_go->SetupAttachment(GetCapsuleComponent());
 
 	fpp = true;
 
